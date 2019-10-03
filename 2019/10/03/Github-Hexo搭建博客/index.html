@@ -7,7 +7,7 @@
 
 
 
-<title>Hello World | 程子卿的博客</title>
+<title>Github+Hexo搭建博客 | 程子卿的博客</title>
 
 
 
@@ -169,7 +169,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">Github+Hexo搭建博客</h1>
             
                 <div class="post-meta">
                     
@@ -178,7 +178,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 3, 2019&nbsp;&nbsp;15:27:13</a>
+                        Date: <a href="#">October 3, 2019&nbsp;&nbsp;17:51:52</a>
                         </span>
                     
                     
@@ -187,20 +187,42 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+            <h1 id="使用-Github-Page-Hexo-搭建自己的博客网站"><a href="#使用-Github-Page-Hexo-搭建自己的博客网站" class="headerlink" title="使用 Github Page + Hexo 搭建自己的博客网站"></a>使用 Github Page + Hexo 搭建自己的博客网站</h1><p>[TOC]</p>
+<h2 id="注册Github账号"><a href="#注册Github账号" class="headerlink" title="注册Github账号"></a>注册Github账号</h2><p>没有账号的先<a href="https://github.com/" target="_blank" rel="noopener">注册</a>账号</p>
+<h2 id="安装各种工具"><a href="#安装各种工具" class="headerlink" title="安装各种工具"></a>安装各种工具</h2><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><ol>
+<li><p>下载<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a>，<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git使用教程</a></p>
+</li>
+<li><p>傻瓜式安装，成功标志：在开始菜单里找到“Git”-&gt;“Git Bash”，，蹦出一个类似命令行窗口的东西</p>
+</li>
+<li><p>配置Git，没有账号的见注册步骤</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h3><p>Node.js 是一个基于 Chrome V8 引擎的 <a href="https://baike.baidu.com/item/JavaScript/321142" target="_blank" rel="noopener">JavaScript</a> 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型。Node 是一个让 JavaScript 运行在<a href="https://baike.baidu.com/item/服务端/6492316" target="_blank" rel="noopener">服务端</a>的开发平台，它让 JavaScript 成为与<a href="https://baike.baidu.com/item/PHP/9337" target="_blank" rel="noopener">PHP</a>、<a href="https://baike.baidu.com/item/Python/407313" target="_blank" rel="noopener">Python</a>、<a href="https://baike.baidu.com/item/Perl/851577" target="_blank" rel="noopener">Perl</a>、<a href="https://baike.baidu.com/item/Ruby/11419" target="_blank" rel="noopener">Ruby</a> 等服务端语言平起平坐的<a href="https://baike.baidu.com/item/脚本语言/1379708" target="_blank" rel="noopener">脚本语言</a>。</p>
+<p>npm是NodeJS的包管理器</p>
+<p>由于Hexo基于NodeJS，安装Hexo需先安装NodeJS</p>
+<ol>
+<li><p>下载<a href="https://nodejs.org/en/" target="_blank" rel="noopener">NodeJS</a></p>
+</li>
+<li><p>傻瓜式安装，成功标志：打开cmd输入node -v和npm -v显示版本。显示不是内部或外部命令的解决方法</p>
+<ul>
+<li>重启cmd</li>
+<li>查看是否配置NodeJS环境变量(计算机-&gt;属性-&gt;高级系统属性-&gt;高级-&gt;环境变量-&gt;找到Path查看是否有NodeJS路径)</li>
+</ul>
+</li>
+<li><p>配置npm</p>
+<p>生成package.json，这个文件的作用就是管理你本地安装的npm包，一个package.json文件可以做如下事情：</p>
+<blockquote>
+<p>展示项目所依赖的npm包<br>允许你指定一个包的版本[范围]<br>让你建立起稳定，意味着你可以更好的与其他开发者共享</p>
+</blockquote>
+<p>使用默认配置生成package.json文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<p>执行完命令后可以看到用户路径下多了一个package.json文件</p>
+</li>
+</ol>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3>
         </div>
 
         
@@ -214,7 +236,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://orangesching.github.io/2019/10/03/hello-world/">https://orangesching.github.io/2019/10/03/hello-world/</a></span>
+                        <span><a href="https://orangesching.github.io/2019/10/03/Github-Hexo搭建博客/">https://orangesching.github.io/2019/10/03/Github-Hexo搭建博客/</a></span>
                     </p>
                 
                 
@@ -247,8 +269,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/10/03/Github-Hexo搭建博客/">Github+Hexo搭建博客</a>
             
+            <a class="next" rel="next" href="/2019/10/03/hello-world/">Hello World</a>
             
         </section>
 
