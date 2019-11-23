@@ -143,9 +143,25 @@ function activateLightMode(){
 </ul>
 </li>
 <li><p>构建的模型</p>
+<ol>
+<li><p>任务延迟</p>
+<script type="math/tex; mode=display">
+D_{i}=\frac{f_{i}^{t}}{f_{c_{i}}}+\frac{d_{i}^{u}}{b_{c_{i}}}+\frac{d_{i-1, i}}{b_{c_{i-1}, c_{i}}}</script><p>计算时间 + 任务$i-1$传输结果到$i$所需的时间 + 互动数据的传输时间</p>
+<p>注：这里的计算量$f_{i}^{t}$是任务$i$的指令条数</p>
 </li>
-</ul>
+<li><p>通信模型</p>
 <ul>
+<li>BS（使用4G通信）</li>
+</ul>
+<script type="math/tex; mode=display">
+b_{c_{i}}=w \log _{2} \frac{1+q_{v} g_{v, c_{i}}}{\varpi_{0}+\sum_{u \in U_{c_{i}}, u \neq v} q_{u} g_{u, c_{i}}}, c_{i} \in B S</script><ul>
+<li>AP（使用WLAN通信）<script type="math/tex; mode=display">
+b_{c_{i}}=\frac{h p_{t} L}{\left(1-p_{t}\right)\left(1+\tau_{s}\right)+\left[\left(1-p_{t}\right)^{1-h}-\left(1-p_{t}-h p_{t}\right)\right] p_{t}}, c_{i} \in AP</script><script type="math/tex; mode=display">
+p_{t}=\frac{2\left(1-2 p_{c}\right)}{\left(1-2 p_{c}\right)\left(W_{m i n}+1\right)+p_{c} W_{m i n}\left[1-\left(2 p_{c}\right)^{m_{b}}\right]}</script>$p_{t}$是设备在一个时隙传输一个包的概率</li>
+</ul>
+</li>
+</ol>
+</li>
 <li><p>DRL模型</p>
 </li>
 <li></li>
