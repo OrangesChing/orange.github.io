@@ -18,7 +18,7 @@ tags:
 
 3. 可访问 https://用户名.github.io 来访问你的静态站点（如果你在该仓库写一个index.html则会显示这个页面的内容）
 
-# 安装各种工具
+# <span id="2">安装各种工具</span>
 
 ## Git
 
@@ -153,7 +153,7 @@ hexo s   #浏览器访问 http://localhost:4000 浏览
 打开项目根目录下的 _config.yml 配置文件。Deploymen部分按如下配置（也可同时部署到多个仓库）：
 
 ```yaml
-# Deployment
+# <span id = "4">Deployment</span>
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
@@ -175,4 +175,118 @@ hexo g -d
 ```
 
 稍等一会，在浏览器访问网址： https://用户名.github.io  成功！！！具体配置和使用教程参见下一博客
+
+# 备份原文件/多电脑写博客同步
+
+由于`hexo d`上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。也就是上传的是在本地目录里自动生成的`.deploy_git`里面。其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github。所以可以利用git的分支管理，将源文件上传到github的另一个分支即可备份
+
+1.  首先，在github上新建一个hexo分支，如图：
+
+![image-20200812223823965](.\Github-Hexo搭建博客\新建分支.png)
+
+2. 在这个仓库的settings中，选择默认分支为hexo分支（这样每次同步的时候就不用指定分支，比较方便）。
+
+![image-20200812224146694](.\Github-Hexo搭建博客\设置默认分支.png)
+
+3. 在本地的任意目录下，打开git bash克隆代码，因为默认分支已经设成了hexo，所以clone时只clone了hexo。
+
+```bash
+git clone git@github.com:ZJUFangzh/ZJUFangzh.github.io.git
+```
+
+4. 在克隆到本地的username.github.io中，把除了.git 文件夹外的所有文件都删掉（因为刚刚建立的分支代码和主分支一样，除了.git文件夹其他都没用）
+
+5. 把之前写的博客源文件全部复制过来，除了`.deploy_git`。这里应该说一句，复制过来的源文件应该有一个`.gitignore`，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：
+
+```cpp
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+```
+
+> 注意，如果你之前克隆过theme中的主题文件，那么应该把主题文件中的`.git`文件夹删掉，因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了了。
+>
+
+6. 提交源代码
+
+```csharp
+git add .
+git commit –m "add branch"
+git push 
+```
+
+这样就上传完了，可以去你的github看一看hexo分支有没有上传上去，其中`node_modules`、`public`、`db.json`已经被忽略掉了，这些文件在别的电脑上需要重新输入命令安装 。
+
+![image-20200812230310206](.\Github-Hexo搭建博客\上传完成图.png)
+
+7. 打开仓库的设置，向下找到GitHub Pages 确定展示使用的分支是master，不然页面会报404
+
+![确认显示用的分支是master](.\Github-Hexo搭建博客\确认显示用的分支是master.png)
+
+
+
+不要忘了，每次写完最好都把源文件上传一下
+
+```csharp
+git add .
+git commit –m "描述xxxx"
+git push 
+```
+
+如果是在已经编辑过的电脑上，已经有clone文件夹了，那么，每次只要和远端同步一下就行了
+
+```undefined
+git pull
+```
+
+>
+> 总结：简单的说就是把仓库分为了两个分支：master和hexo(默认)
+>
+> hexo分支使用git方式上传
+>
+> master分支使用hexo g; hexo d上传 
+
+
+# 迁移到新电脑
+
+
+
+1. [安装各种工具](#2)
+
+2. [部署到Github Page-配置SSH key](#4)
+
+3. 直接在任意文件夹下clone源文件
+
+```bash
+git clone git@github.com:username/username.github.io.git
+```
+
+4. 进入克隆到的文件夹安装
+
+```css
+cd xxx.github.io
+npm install
+npm install hexo-deployer-git --save
+```
+
+5. 生成，部署：
+
+```undefined
+hexo g
+hexo d
+```
+
+6. 就可以开始写你的新博客了
+
+```cpp
+hexo new newpage
+```
+
+
+
+参考：https://www.jianshu.com/p/153490a029a5
 
