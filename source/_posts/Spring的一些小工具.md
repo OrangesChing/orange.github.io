@@ -2,9 +2,10 @@
 title: Spring的一些小工具
 date: 2020-08-24 17:05:23
 tags:
-  - Spring应用
+  - JAVA工具
 categories:
   - Spring
+  - Spring实践
 ---
 
 # Liquibase

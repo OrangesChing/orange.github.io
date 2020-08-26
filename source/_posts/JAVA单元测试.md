@@ -5,7 +5,8 @@ tags:
   - 单元测试
   - Junit
 categories:
-  - Java测试
+  - Java
+  - 工程技术
 ---
 
 # 单元测试的任务

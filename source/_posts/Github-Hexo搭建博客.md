@@ -3,6 +3,8 @@ title:  使用 Github Page + Hexo 搭建自己的博客网站
 date: 2019-10-03 10:36:20
 tags: 
   - 博客
+categories:
+  - 博客
 ---
 
 [TOC]

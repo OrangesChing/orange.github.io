@@ -1,8 +1,10 @@
 ---
 title: Hexo常用命令
 date: 2019-10-04 10:59:00
-tags: 
-	- 博客
+tags:
+  - 博客
+categories:
+  - 博客
 ---
 
 详细使用文档参见 [hexo](https://hexo.io/zh-cn/) 官网

@@ -3,8 +3,10 @@ title: JAVA8骚操作
 date: 2020-08-18 14:04:06
 tags:
   - JAVA8
-  - JAVA
+  - lambda表达式
+  - Stream
 categories:
+  - Java
   - Java基础
 TODO: Date/TimeAPI完善
 ---
@@ -175,382 +177,7 @@ Java 8在java.util.function包下预定义了大量的函数式接口供我们�
 
 # Stream
 
-Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，就可以很方便地写出高性能的并发程序。所以说，Java 8 中首次出现的 java.util.stream 是一个函数式语言+多核时代综合影响的产物。
-
-在传统的 J2EE 应用中，Java 代码经常不得不依赖于关系型数据库的操作如：取平均值、取最大最小值、取汇总值、或者进行分组等等类似的这些操作。
-但在当今这个数据大爆炸的时代，在数据来源多样化、数据海量化的今天，很多时候不得不脱离 RDBMS，或者以底层返回的数据为基础进行更上层的数据统计。而 Java 的集合 API 中，仅仅有极少量的辅助型方法，更多的时候是程序员需要用 Iterator 来遍历集合，完成相关的聚合应用逻辑。这是一种远不够高效、笨拙的方法。在Java 7 中，如果要找一年级的所有学生，然后返回按学生分数值降序排序好的学生ID的集合，我们需要这样写：
-
-```java
-public class Student {
-
-
-
- 
-
-
-
-    /**
-
-
-
-     * ID
-
-
-
-     */
-
-
-
-    private Integer id;
-
-
-
- 
-
-
-
-    /**
-
-
-
-     * 年级
-
-
-
-     */
-
-
-
-    private Grade grade;
-
-
-
- 
-
-
-
-    /**
-
-
-
-     * 分数
-
-
-
-     */
-
-
-
-    private Integer score;
-
-
-
- 
-
-
-
-    public Student(Integer id, Grade grade, Integer score) {
-
-
-
-        this.id = id;
-
-
-
-        this.grade = grade;
-
-
-
-        this.score = score;
-
-
-
-    }
-
-
-
- 
-
-
-
-    public Integer getId() {
-
-
-
-        return id;
-
-
-
-    }
-
-
-
- 
-
-
-
-    public void setId(Integer id) {
-
-
-
-        this.id = id;
-
-
-
-    }
-
-
-
- 
-
-
-
-    public Grade getGrade() {
-
-
-
-        return grade;
-
-
-
-    }
-
-
-
- 
-
-
-
-    public void setGrade(Grade grade) {
-
-
-
-        this.grade = grade;
-
-
-
-    }
-
-
-
- 
-
-
-
-    public Integer getScore() {
-
-
-
-        return score;
-
-
-
-    }
-
-
-
- 
-
-
-
-    public void setScore(Integer score) {
-
-
-
-        this.score = score;
-
-
-
-    }
-
-
-
-}
-public enum Grade {
-
-
-
- 
-
-
-
-    ONE, TWO, THREE
-
-
-
- 
-
-
-
-}
-    /**
-
-
-
-     * 传统方法
-
-
-
-     * @param studentList
-
-
-
-     * @return
-
-
-
-     */
-
-
-
-    public static List<Integer> oldMethod(List<Student> studentList) {
-
-
-
- 
-
-
-
-        // 取出一年级学生
-
-
-
-        List<Student> gradeOneStudentList = new ArrayList<>();
-
-
-
-        for (Student student : studentList) {
-
-
-
-            if (Grade.ONE.equals(student.getGrade())) {
-
-
-
-                gradeOneStudentList.add(student);
-
-
-
-            }
-
-
-
-        }
-
-
-
-        // 按成绩排序
-
-
-
-        Collections.sort(gradeOneStudentList, new Comparator<Student>() {
-
-
-
-            @Override
-
-
-
-            public int compare(Student o1, Student o2) {
-
-
-
-                return o1.getScore().compareTo(o2.getScore());
-
-
-
-            }
-
-
-
-        });
-
-
-
-//        Collections.sort(gradeOneStudentList, Comparator.comparing(Student::getScore));
-
-
-
- 
-
-
-
-        List<Integer> studentIdList = new ArrayList<>();
-
-
-
-        for (Student student : gradeOneStudentList) {
-
-
-
-            studentIdList.add(student.getId());
-
-
-
-        }
-
-
-
- 
-
-
-
-        return studentIdList;
-
-
-
-    }
-```
-
-而在 Java 8 使用 Stream，代码更加简洁易读；而且使用并发模式，程序执行速度更快。
-
-```java
-    /**
-
-
-
-     * 使用stream
-
-
-
-     * @param studentList
-
-
-
-     * @return
-
-
-
-     */
-
-
-
-    public static List<Integer> newMethod(List<Student> studentList) {
-
-
-
-        return studentList.stream()
-
-
-
-                .filter((student -> student.getGrade().equals(Grade.ONE)))
-
-
-
-                .sorted(Comparator.comparingInt(Student::getScore))
-
-
-
-                .map(Student::getId)
-
-
-
-                .collect(Collectors.toList());
-
-
-
-    }
-```
+Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)
 
 ## Stream相关定义
 
@@ -602,7 +229,29 @@ Stream 不是集合元素，它不是数据结构并不保存数据，它是有�
     `Pattern.splitAsStream(java.lang.CharSequence)`
     `JarFile.stream()`
 
-## Stream的操作
+```java
+// 1、从Collection 和数组生成
+Stream stream = Stream.of("a", "b", "c");
+
+String [] strArray = new String[] {"a", "b", "c"};
+stream = Stream.of(strArray);
+stream = Arrays.stream(strArray);
+
+List<String> list = Arrays.asList(strArray);
+stream = list.stream();
+
+// 2、数值流的构造
+// 对于基本数值型，目前有三种对应的包装类型 Stream：IntStream、LongStream、DoubleStream
+IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
+IntStream.range(1, 3).forEach(System.out::println);
+
+ // 3、流转换为其他数据结构
+Stream<String> stream3 = Stream.of(new String[]{"1", "2", "3"});
+String str = stream3.collect(Collectors.joining());
+System.out.println(str);
+```
+
+## Stream的使用
 
 ### Stream的操作类型
 
@@ -617,7 +266,7 @@ Stream 不是集合元素，它不是数据结构并不保存数据，它是有�
 
 ### 中间操作
 
-|                                                        |                                                              |
+| 操作                                                   | 详情                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
 | `map(mapToInt,mapToLong,mapToDouble) `                 | 转换操作符，把比如A->B，这里默认提供了转int，long，double的操作符。 |
 | `flatmap(flatmapToInt,flatmapToLong,flatmapToDouble) ` | 拍平操作符，把 int[]{2,3,4} 拍平 变成 2，3，4 也就是从原来的一个数据变成了3个数据，这里默认提供了拍平成int,long,double的操作符。 |
@@ -632,584 +281,105 @@ Stream 不是集合元素，它不是数据结构并不保存数据，它是有�
 
 ### 结束操作
 
-|      |      |
-| ---- | ---- |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-|      |      |
-
-
-
-> 1. collect 收集操作，将所有数据收集起来，这个操作非常重要，官方的提供的Collectors 提供了非常多收集器，可以说Stream 的核心在于Collectors。
-> 2. count 统计操作，统计最终的数据个数。
-> 3. findFirst、findAny 查找操作，查找第一个、查找任何一个 返回的类型为Optional。
-> 4. noneMatch、allMatch、anyMatch 匹配操作，数据流中是否存在符合条件的元素 返回值为bool 值。
-> 5. min、max 最值操作，需要自定义比较器，返回数据流中最大最小的值。
-> 6. reduce 规约操作，将整个数据流的值规约为一个值，count、min、max底层就是使用reduce。
-> 7. forEach、forEachOrdered 遍历操作，这里就是对最终的数据进行消费了。
-> 8. toArray 数组操作，将数据流的元素转换成数组。
-
-
-
-## Stream的使用
-
-- \1. 构造流的几种常见方法
-
-```java
-        // 1、构造流的常用方法
-
-
-
-        // 1> Individual values
-
-
-
-        Stream stream = Stream.of("a", "b", "c");
-
-
-
- 
-
-
-
-        // 2> Arrays
-
-
-
-        String [] strArray = new String[] {"a", "b", "c"};
-
-
-
-        stream = Stream.of(strArray);
-
-
-
-        stream = Arrays.stream(strArray);
-
-
-
- 
-
-
-
-        // 3> Collections
-
-
-
-        List<String> list = Arrays.asList(strArray);
-
-
-
-        stream = list.stream();
-
-
-
-        stream.forEach(System.out::println);
-```
-
-- \2. 数值流的构造
-
-  对于基本数值型，目前有三种对应的包装类型 Stream：IntStream、LongStream、DoubleStream。
-
-```java
-        // 2、数值流的构造
-
-
-
-        // 对于基本数值型，目前有三种对应的包装类型 Stream：IntStream、LongStream、DoubleStream
-
-
-
-        IntStream.of(new int[]{1, 2, 3}).forEach(System.out::println);
-
-
-
-        IntStream.range(1, 3).forEach(System.out::println);
-
-
-
-        IntStream.rangeClosed(1, 3).forEach(System.out::println);
-```
-
-- \3. 流转换为其他数据结构
-
-```java
-        // 3、流转换为其他数据结构
-
-
-
-        Stream<String> stream3 = Stream.of(new String[]{"1", "2", "3"});
-
-
-
-//        List<String> list1 = stream3.collect(Collectors.toList());
-
-
-
-//        List<String> list2 = stream3.collect(Collectors.toCollection(ArrayList::new));
-
-
-
-        // 一个 Stream 只可以使用一次
-
-
-
-        String str = stream3.collect(Collectors.joining());
-
-
-
-        System.out.println(str);
-```
-
-- \4. 流的典型用法
+| 操作                          | 详情                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| `collect`                     | 收集操作，将所有数据收集起来，这个操作非常重要，官方的提供的Collectors 提供了非常多收集器，可以说Stream 的核心在于Collectors |
+| `count`                       | 统计操作，统计最终的数据个数                                 |
+| `findFirst findAny`           | 查找操作，查找第一个、查找任何一个 返回的类型为Optional      |
+| `noneMatch allMatch anyMatch` | 匹配操作，数据流中是否存在符合条件的元素 返回值为bool 值     |
+| `min max`                     | 最值操作，需要自定义比较器，返回数据流中最大最小的值         |
+| `reduce`                      | 规约操作，将整个数据流的值规约为一个值，count、min、max底层就是使用reduce |
+| `forEach forEachOrdered`      | 遍历操作，这里就是对最终的数据进行消费了                     |
+| `toArray`                     | 数组操作，将数据流的元素转换成数组                           |
+
+
+
+### Stream的典型用法
 
 ```java
       // 4、流的典型用法
-
-
-
         // 1> map/flatMap
-
-
-
         // map 生成的是个 1:1 映射，每个输入元素，都按照规则转换成为另外一个元素
-
-
-
         Stream<String> stream4 = Stream.of(new String[]{"a", "b", "c"});
-
-
-
         stream4.map(String::toUpperCase).forEach(System.out::println);
-
-
-
- 
-
-
-
         // 还有一些场景，是一对多映射关系的，这时需要 flatMap
-
-
-
         Stream<List<Integer>> inputStream = Stream.of(
-
-
-
                 Arrays.asList(1),
-
-
-
                 Arrays.asList(2, 3),
-
-
-
                 Arrays.asList(4, 5, 6)
-
-
-
         );
-
-
-
 //        Stream<Integer> mapStream = inputStream.map(List::size);
-
-
-
 //        mapStream.forEach(System.out::println);
-
-
-
         Stream<Integer> flatMapStream = inputStream.flatMap(Collection::stream);
-
-
-
         flatMapStream.forEach(System.out::println);
 
-
-
- 
-
-
-
         // 2> filter
-
-
-
         // filter 对原始 Stream 进行某项测试，通过测试的元素被留下来生成一个新 Stream
-
-
-
         Integer[] nums = new Integer[]{1,2,3,4,5,6};
-
-
-
         Arrays.stream(nums).filter(n -> n<3).forEach(System.out::println);
-
-
-
  
-
-
-
         // 3> forEach
-
-
-
         // forEach 是 terminal 操作，因此它执行后，Stream 的元素就被“消费”掉了,无法对一个 Stream 进行两次terminal 运算
-
-
-
         Stream stream13 = Arrays.stream(nums);
-
-
-
         stream13.forEach(System.out::print);
-
-
-
 //        stream13.forEach(System.out::print); // 上面forEach已经消费掉了，不能再调用
-
-
-
         System.out.println();
-
-
-
- 
-
-
-
         // 具有相似功能的 intermediate 操作 peek 可以达到上述目的
-
-
-
         Stream stream14 = Arrays.stream(nums);
-
-
-
-        stream14
-
-
-
-                .peek(System.out::print)
-
-
-
-                .peek(System.out::print)
-
-
-
-                .collect(Collectors.toList());
-
-
-
+        stream14.peek(System.out::print)
+			   .peek(System.out::print)
+              	.collect(Collectors.toList());
         System.out.println();
-
-
-
- 
-
-
 
         // 4> reduce 主要作用是把 Stream 元素组合起来,字符串拼接、数值的 sum、min、max、average 都是特殊的 reduce
-
-
-
         // Stream 的 sum 就相当于：
-
-
-
         Integer sum = Arrays.stream(nums).reduce(0, (integer, integer2) -> integer + integer2);
-
-
-
         System.out.println(sum);
-
-
-
         // 有初始值
-
-
-
         Integer sum1 = Arrays.stream(nums).reduce(0, Integer::sum);
-
-
-
         // 无初始值
-
-
-
         Integer sum2 = Arrays.stream(nums).reduce(Integer::sum).get();
 
-
-
- 
-
-
-
         // 5> limit/skip
-
-
-
         // limit 返回 Stream 的前面 n 个元素；skip 则是扔掉前 n 个元素。
-
-
-
         Arrays.stream(nums).limit(3).forEach(System.out::print);
-
-
-
         System.out.println();
-
-
-
         Arrays.stream(nums).skip(2).forEach(System.out::print);
-
-
-
         System.out.println();
-
-
-
- 
-
-
 
         // 6> sorted
-
-
-
 //        对 Stream 的排序通过 sorted 进行，它比数组的排序更强之处在于你可以首先对 Stream 进行各类 map、filter、
-
-
-
 //        limit、skip 甚至 distinct 来减少元素数量后，再排序，这能帮助程序明显缩短执行时间。
-
-
-
         Arrays.stream(nums).sorted((i1, i2) -> i2.compareTo(i1)).limit(3).forEach(System.out::print);
-
-
-
         System.out.println();
-
-
-
         Arrays.stream(nums).sorted((i1, i2) -> i2.compareTo(i1)).skip(2).forEach(System.out::print);
-
-
-
         System.out.println();
-
-
-
- 
-
-
 
         // 7> min/max/distinct
-
-
-
         System.out.println(Arrays.stream(nums).min(Comparator.naturalOrder()).get());
-
-
-
         System.out.println(Arrays.stream(nums).max(Comparator.naturalOrder()).get());
-
-
-
         Arrays.stream(nums).distinct().forEach(System.out::print);
-
-
-
         System.out.println();
-
-
-
- 
-
-
 
         // 8> Match
-
-
-
 //        Stream 有三个 match 方法，从语义上说：
-
-
-
 //        allMatch：Stream 中全部元素符合传入的 predicate，返回 true
-
-
-
 //        anyMatch：Stream 中只要有一个元素符合传入的 predicate，返回 true
-
-
-
 //        noneMatch：Stream 中没有一个元素符合传入的 predicate，返回 true
-
-
-
 //        它们都不是要遍历全部元素才能返回结果。例如 allMatch 只要一个元素不满足条件，就 skip 剩下的所有元素，返回 false。
-
-
-
         Integer[] nums1 = new Integer[]{1, 2, 2, 3, 4, 5, 5, 6};
-
-
-
         System.out.println(Arrays.stream(nums1).allMatch(integer -> integer < 7));
-
-
-
         System.out.println(Arrays.stream(nums1).anyMatch(integer -> integer < 2));
-
-
-
         System.out.println(Arrays.stream(nums1).noneMatch(integer -> integer < 0));
 ```
-
-- \5. 用Collectors来进行reduction操作
-
-```java
-        // 5、用Collectors来进行reduction操作
-
-
-
-//        java.util.stream.Collectors 类的主要作用就是辅助进行各类有用的 reduction 操作，例如转变输出为 Collection，把 Stream 元素进行归组。
-
-
-
-        // 1> groupingBy/partitioningBy
-
-
-
-        final Collection<Student> students = Arrays.asList(
-
-
-
-                new Student(1, Grade.ONE, 60),
-
-
-
-                new Student(2, Grade.TWO, 80),
-
-
-
-                new Student(3, Grade.ONE, 100)
-
-
-
-        );
-
-
-
-        // 按年级进行分组groupingBy
-
-
-
-        students.stream().collect(Collectors.groupingBy(Student::getGrade)).forEach(((grade,students1) -> {
-
-
-
-            System.out.println(grade);
-
-
-
-            students1.forEach(student ->
-
-
-
-                    System.out.println(student.getId()+","+student.getGrade()+","+student.getScore()));
-
-
-
-        }));
-
-
-
- 
-
-
-
-        // 按分数段分组partitioningBy
-
-
-
-        students.stream().collect(Collectors.partitioningBy(student -> student.getScore()<=60)).forEach(((match, students1) -> {
-
-
-
-            System.out.println(match);
-
-
-
-            students1.forEach(student ->
-
-
-
-                    System.out.println(student.getId()+","+student.getGrade()+","+student.getScore()));
-
-
-
-        }));
-```
-
-- \6. parallelStream
-
-```java
-        // 6、parallelStream
-
-
-
-//        parallelStream其实就是一个并行执行的流.它通过默认的ForkJoinPool,可以提高你的多线程任务的速度
-
-
-
-        Arrays.stream(nums).parallel().forEach(System.out::print);
-
-
-
-        System.out.println();
-
-
-
-        System.out.println(Arrays.stream(nums).parallel().reduce(Integer::sum).get());
-
-
-
- 
-
-
-
-        Arrays.stream(nums).forEach(System.out::print);
-
-
-
-        System.out.println();
-
-
-
-        System.out.println(Arrays.stream(nums).reduce(Integer::sum).get());
-```
-
-parallelStream底层是使用的ForkJoin。而ForkJoin里面的线程是通过ForkJoinPool来运行的，Java 8为ForkJoinPool添加了一个通用线程池，这个线程池用来处理那些没有被显式提交到任何线程池的任务。它是ForkJoinPool类型上的一个静态元素。它拥有的默认线程数量等于运行计算机上的处理器数量，所以这里就出现了这个java进程里所有使用parallelStream的地方实际上是公用的同一个ForkJoinPool。parallelStream提供了更简单的并发执行的实现，但并不意味着更高的性能，它是使用要根据具体的应用场景。如果cpu资源紧张parallelStream不会带来性能提升；如果存在频繁的线程切换反而会降低性能。
 
 ## Stream总结
 
 1. 不是数据结构，它没有内部存储，它只是用操作管道从 source（数据结构、数组、generator function、IO channel）抓取数据
-2. 它也绝不修改自己所封装的底层数据结构的数据。例如 Stream 的 filter 操作会产生一个不包含被过滤元素的新 Stream，而不是从 source 删除那些元素
+2. 它绝不修改自己所封装的底层数据结构的数据。例如 Stream 的 filter 操作会产生一个不包含被过滤元素的新 Stream，而不是从 source 删除那些元素
 3. 所有 Stream 的操作必须以 lambda 表达式为参数
 4. 惰性化，很多 Stream 操作是向后延迟的，一直到它弄清楚了最后需要多少数据才会开始，Intermediate操作永远是惰性化的
 5. 当一个 Stream 是并行化的，就不需要再写多线程代码，所有对它的操作会自动并行进行的
-
-
 
 # 接口的默认方法
 
