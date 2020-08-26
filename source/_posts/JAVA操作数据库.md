@@ -9,12 +9,16 @@ tags:
 categories:
   - Java
   - 工程技术
-TODO:Hibernate缓存机制和拦截器
+TODO: Hibernate缓存机制和拦截器
 ---
 
 JAVA的数据库操作可视为以下演变图，ORM框架中可以加入池化技术，ORM框架的底层都是JDBC实现，只是为了方便开发和解耦封装。
 
+
+
 ![数据库操作演变](.\JAVA操作数据库\数据库操作演变.png)
+
+
 
 # 原生JDBC
 
@@ -737,9 +741,7 @@ public class ManageEmployee {
 }
 ```
 
-## 缓存机制
 
-## 拦截器
 
 # MyBatis
 
@@ -1090,11 +1092,49 @@ Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基
 
 ### 配置
 
+在 `application.yml` 配置文件中添加 H2 数据库的相关配置：
+
+```yaml
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    url: jdbc:h2:mem:test
+    username: root
+    password: test
+```
+
+在 Spring Boot 启动类中添加 `@MapperScan` 注解，扫描 Mapper 文件夹：
+
+```java
+@SpringBootApplication
+@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(QuickStartApplication.class, args);
+    }
+
+}
+```
+
 ### 创建实体类
 
+```java
+@Data
+public class User {
+    private Long id;
+    private String name;
+    private Integer age;
+    private String email;
+}
+```
 
+### 创建Mapper类或Service类
 
-### 创建Mapper类
+#### Mapper类
 
 创建Mapper类继承BaseMapper类，BaseMapper类是
 
@@ -1104,7 +1144,67 @@ public interface UserMapper extends BaseMapper<User> {
 }
 ```
 
+> - 通用 CRUD 封装`BaseMapper`接口，为 `Mybatis-Plus` 启动时自动解析实体表关系映射转换为 `Mybatis` 内部对象注入容器
+> - 泛型 `T` 为任意实体对象
+> - 参数 `Serializable` 为任意类型主键 `Mybatis-Plus` 不推荐使用复合主键约定每一张表都有自己的唯一 `id` 主键
+> - 对象 `Wrapper` 为条件构造器
 
+#### Service类
+
+创建Service接口继承IService接口，创建Service类继承ServiceImpl类和Service接口
+
+```java
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.tp.mybatisplusstudy.vo.User;
+
+public interface IUserService extends IService<User> {
+}
+```
+
+```java
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.tp.mybatisplusstudy.dao.UserMapper;
+import com.tp.mybatisplusstudy.service.IUserService;
+import com.tp.mybatisplusstudy.vo.User;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+}
+```
+
+
+> 说明:
+>
+> - 通用 Service CRUD 封装`IService`接口，进一步封装 CRUD 采用 `get 查询单行` `remove 删除` `list 查询集合` `page 分页` 前缀命名方式区分 `Mapper` 层避免混淆，
+> - 泛型 `T` 为任意实体对象
+> - 建议如果存在自定义通用 Service 方法的可能，请创建自己的 `IBaseService` 继承 `Mybatis-Plus` 提供的基类
+> - 对象 `Wrapper` 为条件构造器
+
+### 调用函数操纵数据库
+
+| Service CRUD 接口                                            | Mapper CRUD 接口                           |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| Save<br />SaveOrUpdate<br />Remove<br />Update<br />Get<br />List<br />Page<br />Count<br />Chain | Insert<br />Delete<br />Update<br />Select |
+
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SampleTest {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Test
+    public void testSelect() {
+        System.out.println(("----- selectAll method test ------"));
+        List<User> userList = userMapper.selectList(null);    // 使用了Mapper接口
+        Assert.assertEquals(5, userList.size());
+        userList.forEach(System.out::println);
+    }
+
+}
+```
 
 参考：
 
