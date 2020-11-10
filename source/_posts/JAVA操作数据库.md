@@ -9,7 +9,6 @@ tags:
 categories:
   - Java
   - 工程技术
-TODO: Hibernate缓存机制和拦截器
 ---
 
 JAVA的数据库操作可视为以下演变图，ORM框架中可以加入池化技术，ORM框架的底层都是JDBC实现，只是为了方便开发和解耦封装。
