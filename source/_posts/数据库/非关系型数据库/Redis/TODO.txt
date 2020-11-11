@@ -1,0 +1,29 @@
+Redis概述
+	什么是Redis
+	Redis对比MYSQL、memcached
+	使用场景
+	需要承担的问题
+
+Redis安装及管理命令
+	安装
+	管理命令
+
+Redis五大数据结构
+	概述——使用场景、特性
+	命令
+
+Redis发布订阅
+
+Redis事务
+
+Redis管道
+
+Redis持久化
+
+Redis主从复制
+
+LRU淘汰策略
+
+Redis高可用
+
+Redis高性能
