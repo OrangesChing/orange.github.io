@@ -12,7 +12,7 @@ TODO: cannal的原理,api
 
 # 简介
 
-![img](\Canal的原理及使用\架构.png)
+![架构](Canal的原理及使用/架构.png)
 
 canal，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费
 
@@ -26,7 +26,7 @@ canal，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增
 
 > **主从复制的流程**
 >
-> ![img](\Canal的原理及使用\原理.png)
+> ![原理](Canal的原理及使用/原理.png)
 >
 > 复制遵循三步过程：
 >
@@ -115,19 +115,19 @@ canal，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增
 
   直接打开bin/starup.bat
 
-  ![image-20200911091233595](\Canal的原理及使用\canal服务器启动.png)
+  ![canal服务器启动](Canal的原理及使用/canal服务器启动.png)
 
 - 查看 server 日志
 
   日志路径`logs/canal/canal.log`
   
-  ![image-20200911091324959](\Canal的原理及使用\canal服务器启动后日志.png)
+  ![canal服务器启动后日志](Canal的原理及使用/canal服务器启动后日志.png)
 
 - 查看 instance 的日志
 
   日志路径`logs/example/example.log`
   
-  ![image-20200911091559490](\Canal的原理及使用\example日志.png)
+  ![example日志](Canal的原理及使用/example日志.png)
 
 - 关闭
 

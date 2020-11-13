@@ -14,7 +14,7 @@ categories:
 
 JAVA的数据库操作可视为以下演变图，ORM框架中可以加入池化技术，ORM框架的底层都是JDBC实现，只是为了方便开发和解耦封装。
 
-![数据库操作演变](数据库操作演变.png)
+![数据库操作演变](JAVA操作关系型数据库/数据库操作演变.png)
 
 # 原生JDBC
 
@@ -58,7 +58,7 @@ JDBC是Java数据库连接，全称是Java Database Connectivity，简称JDBC，
 
 注意写代码之前，要导入数据库驱动包，连接不同厂商的数据库要用不同的驱动包
 
-![img](.\JAVA操作数据库\JDBC.png)
+![JDBC](JAVA操作关系型数据库/JDBC.png)
 
 示例代码如下：
 
@@ -210,7 +210,7 @@ public class MysqlTest {
 
 ## 连接步骤
 
-JAVA操作关系型数据库![在这里插入图片描述](.\JAVA操作关系型数据库\JDBC连接.png)
+JAVA操作关系型数据库![JDBC连接](JAVA操作关系型数据库/JDBC连接.png)
 
 上图大致画出以访问MySQL为例，执行一条 SQL 命令的流程：
 
@@ -389,9 +389,9 @@ Hibernate更强调如何对单条记录进行操作，对于更复杂的操作�
 
 ## 架构
 
-| ![image](.\JAVA操作关系型数据库\hibernate_architecture.jpg) | ![image](.\JAVA操作关系型数据库\hibernate_high_level.jpg) |
-| ----------------------------------------------------------- | --------------------------------------------------------- |
-| 详细的 Hibernate 应用程序体系结构                           | 非常高水平的 Hibernate 应用程序架构                       |
+| ![架构](JAVA操作关系型数据库/hibernate_architecture.jpg) | ![高层次架构](JAVA操作关系型数据库/hibernate_high_level.jpg) |
+| -------------------------------------------------------- | ------------------------------------------------------------ |
+| 详细的 Hibernate 应用程序体系结构                        | 非常高水平的 Hibernate 应用程序架构                          |
 
 Hibernate 架构是分层的，作为数据访问层，你不必知道底层 API 。Hibernate 利用数据库以及配置数据来为应用程序提供持续性服务（以及持续性对象）
 
@@ -1078,9 +1078,9 @@ Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基
 
 ## 架构
 
-![framework](.\JAVA操作关系型数据库\mybatis-plus-framework.jpg)
+![架构](JAVA操作关系型数据库/mybatis-plus-framework.jpg)
 
-![img](.\JAVA操作关系型数据库\mybatis-plus-framework-detail.jpg)
+![架构细节](JAVA操作关系型数据库/mybatis-plus-framework-detail.jpg)
 
 ## 开发步骤
 

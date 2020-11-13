@@ -195,7 +195,7 @@ public class AutoGenerater {
 
 ## 最终项目结构
 
-![image-20200901185618429](D:\OrangeBlog\source\_posts\MyBatis-plus环境配置\springboot目录结构.png)
+![springboot目录结构](MyBatis-plus环境配置/springboot目录结构.png)
 
 
 ## 在启动类添加MapperScan

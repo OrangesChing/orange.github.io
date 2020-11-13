@@ -15,16 +15,16 @@ categories:
 
 1、 employeeMapper 的本质 org.apache.ibatis.binding.MapperProxy
 2、 MapperProxy 中 sqlSession –>SqlSessionFactory
-![在这里插入图片描述](.\MyBatis-plus运行原理\sqlSessionFactory.png)
+![sqlSessionFactory](MyBatis-plus运行原理/sqlSessionFactory.png)
 3、SqlSessionFacotry 中 → Configuration→ MappedStatements 。每一个 mappedStatement 都表示 Mapper 接口中的一个方法与 Mapper 映射文件中的一个 SQL。 MyBatisPlus在启动就会挨个分析 xxxMapper 中的方法，并且将对应的 SQL 语句处理好，保存到 configuration 对象中的mappedStatements 中
-![在这里插入图片描述](.\MyBatis-plus运行原理\Configuration.png)
-![在这里插入图片描述](.\MyBatis-plus运行原理\Configuration2.png)
+![Configuration](MyBatis-plus运行原理/Configuration.png)
+![Configuration2](MyBatis-plus运行原理/Configuration2.png)
 
 mappedStatements 中
-![在这里插入图片描述](.\MyBatis-plus运行原理\mappedStatements.png)
+![mappedStatements](MyBatis-plus运行原理/mappedStatements.png)
 
 4、本质:
-![在这里插入图片描述](.\MyBatis-plus运行原理\本质.png)
+![本质](MyBatis-plus运行原理/本质.png)
 
 - Configuration： MyBatis 或者 MyBatisPlus全局配置对象。
 - MappedStatement：一个 MappedStatement 对象对应 Mapper 配置文件中的一个。 select/update/insert/delete 节点，主要描述的是一条 SQL 语句。

@@ -9,16 +9,14 @@ categories:
   - 博客搭建
 ---
 
-[TOC]
-
 # 注册Github账号、创建代码库
 
 1. 没有账号的先[注册](https://github.com/)账号
-{% asset_img 1.png This is an example image %}
+![注册账号](Github-Hexo搭建博客/1.png)
 
 2. 点击 Start project 或者下面的 new repository 创建一个新的仓库，注意仓库名要以  **用户名.github.io** 命名。且Github规定一个用户仅能使用一个同名仓库的代码托管一个静态站点
 
-   {% asset_img 2.png This is an example image %}
+   ![创建一个新的仓库](Github-Hexo搭建博客/2.png)
 
 3. 可访问 https://用户名.github.io 来访问你的静态站点（如果你在该仓库写一个index.html则会显示这个页面的内容）
 
@@ -136,7 +134,7 @@ hexo s   #浏览器访问 http://localhost:4000 浏览
 
    按照提示完成三次回车，即可生成 ssh key。通过查看 ~/.ssh/id_rsa.pub 文件内容，获取到你的 SSH key
 
-   {% asset_img 3.png This is an example image %}
+   ![生成 ssh key](Github-Hexo搭建博客/3.png)
 
    首次使用还需要确认并添加主机到本机SSH可信列表。若返回 Hi xxx! You've successfully authenticated, but GitHub does not provide shell access. 内容，则证明添加成功。
 
@@ -146,7 +144,7 @@ hexo s   #浏览器访问 http://localhost:4000 浏览
 
 3. 登录 [Github](https://github.com/) 上Settings添加刚刚生成的SSH key
 
-   {% asset_img 4.png This is an example image %}
+   ![Github添加SSH key](Github-Hexo搭建博客/4.png)
 
    创建一个新的 SSH key, 标题随便取，key 填刚才生成的，这样在你的 SSH keys 列表里就有刚刚添加的密钥。
 
@@ -186,11 +184,11 @@ hexo g -d
 
 1.  首先，在github上新建一个hexo分支，如图：
 
-![image-20200812223823965](.\Github-Hexo搭建博客\新建分支.png)
+![新建分支](Github-Hexo搭建博客/新建分支.png)
 
 2. 在这个仓库的settings中，选择默认分支为hexo分支（这样每次同步的时候就不用指定分支，比较方便）。
 
-![image-20200812224146694](.\Github-Hexo搭建博客\设置默认分支.png)
+![设置默认分支](Github-Hexo搭建博客/设置默认分支.png)
 
 3. 在本地的任意目录下，打开git bash克隆代码，因为默认分支已经设成了hexo，所以clone时只clone了hexo。
 
@@ -225,11 +223,11 @@ git push
 
 这样就上传完了，可以去你的github看一看hexo分支有没有上传上去，其中`node_modules`、`public`、`db.json`已经被忽略掉了，这些文件在别的电脑上需要重新输入命令安装 。
 
-![image-20200812230310206](.\Github-Hexo搭建博客\上传完成图.png)
+![完成图](Github-Hexo搭建博客/上传完成图.png)
 
 7. 打开仓库的设置，向下找到GitHub Pages 确定展示使用的分支是master，不然页面会报404
 
-![确认显示用的分支是master](.\Github-Hexo搭建博客\确认显示用的分支是master.png)
+![确认显示用的分支是master](Github-Hexo搭建博客/确认显示用的分支是master.png)
 
 
 
