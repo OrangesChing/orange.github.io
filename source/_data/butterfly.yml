@@ -104,7 +104,7 @@ google_analytics:
 avatar: /img/my.jpg
 
 # the banner image of index
-top_img: http://img.netbian.com/file/2018/0813/e19efc0e7711aad4a16df8b61f45dfaa.jpg
+top_img: /img/index.jpg
 # 以下鏈接是動態壁紙，每次刷新會更換
 # https://source.unsplash.com/collection/collectionid/1600x900
 # https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
