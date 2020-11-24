@@ -47,7 +47,25 @@ categories:
 
 解码后可看到整个项目结构如下
 
-xxl-job-admin：调度中心xxl-job-core：公共依赖xxl-job-executor-samples：执行器Sample示例（选择合适的版本执行器，可直接使用，也可以参考其并将现有项目改造成执行器）    ：xxl-job-executor-sample-springboot：Springboot版本，通过Springboot管理执行器，推荐这种方式；    ：xxl-job-executor-sample-spring：Spring版本，通过Spring容器管理执行器，比较通用；    ：xxl-job-executor-sample-frameless：无框架版本；    ：xxl-job-executor-sample-jfinal：JFinal版本，通过JFinal管理执行器；    ：xxl-job-executor-sample-nutz：Nutz版本，通过Nutz管理执行器；    ：xxl-job-executor-sample-jboot：jboot版本，通过jboot管理执行器；
+- xxl-job-admin：调度中心
+
+- xxl-job-core：公共依赖
+
+- xxl-job-executor-samples：执行器Sample示例（选择合适的版本执行器，可直接使用，也可以参考其并将现有项目改造成执行器）
+
+  - xxl-job-executor-sample-springboot：Springboot版本，通过Springboot管理执行器，推荐这种方式
+
+  - xxl-job-executor-sample-spring：Spring版本，通过Spring容器管理执行器，比较通用
+
+  - xxl-job-executor-sample-frameless：无框架版本
+
+  - xxl-job-executor-sample-jfinal：JFinal版本，通过JFinal管理执行器
+
+  - xxl-job-executor-sample-nutz：Nutz版本，通过Nutz管理执行器
+
+  - xxl-job-executor-sample-jboot：jboot版本，通过jboot管理执行器；
+
+
 
 ## 4.配置部署调度中心
 
@@ -330,7 +348,7 @@ public class DemoJobHandler extends IJobHandler {   // 要统一继承IJobHandle
 
 可以看到不需要JobHandler，因为GLUE模式(Java)运行模式的任务实际上是一段继承自IJobHandler的Java类代码，它在执行器项目中运行，代码由调度中心维护
 
-![image-20200907093834722](D:\OrangeBlog\source\_posts\xxl-job的使用\新增任务信息2.png)
+![image-20200907093834722](xxl-job的使用/新增任务信息2.png)
 
 ### 编辑任务代码
 
