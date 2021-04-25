@@ -1,0 +1,13 @@
+Servlet
+
+Tomcat
+
+JAVA操作数据库
+
+AJAX
+
+HTTP
+	Cookie
+	Session
+
+雪花算法
