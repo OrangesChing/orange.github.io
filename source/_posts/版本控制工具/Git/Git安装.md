@@ -4,7 +4,7 @@ date: 2021-04-27 09:39:00
 tags: 
   - 环境搭建
 categories:
-  - 代码管理工具
+  - 版本控制工具
   - Git
 ---
 
@@ -14,27 +14,25 @@ categories:
 
 打开安装包后，**可一直使用默认选项，点下一步**，下面是各步骤选项详述
 
-![image-20210427134055548](D:\OrangeBlog\source\_posts\代码管理工具\Git\Git安装\image-20210427134055548.png)
-
 1. 设置安装路径
 
-![安装路径](.\Git安装\安装路径.jpg)
+![安装路径](Git安装/安装路径.jpg)
 
 2. 选择安装组件
 
-![安装组件](.\Git安装\安装组件.jpg)
+![安装组件](Git安装/安装组件.jpg)
 
 3. 选择默认编辑器
 
-   ![image-20210427134320574](D:\OrangeBlog\source\_posts\代码管理工具\Git\Git安装\image-20210427134320574.png)
+   ![image-20210427134320574](Git安装/image-20210427134320574.png)
 
 4. 修改系统的环境变量
 
-![环境变量](.\Git安装\环境变量.jpg)
+![环境变量](Git安装/环境变量.jpg)
 
 4. SSL的证书的选择
 
-![SSH证书](.\Git安装\SSH证书.jpg)
+![SSH证书](Git安装/SSH证书.jpg)
 
 > **https：（全称：Hyper Text Transfer Protocol over Secure Socket Layer）**
 >
@@ -44,7 +42,7 @@ categories:
 
 5. 配置行尾结束符
 
-![配置行尾结束符](.\Git安装\配置行尾结束符.jpg)
+![配置行尾结束符](Git安装/配置行尾结束符.jpg)
 
 **配置行尾结束符**
 
@@ -56,7 +54,7 @@ categories:
 
 6. 配置终端仿真
 
-![配置终端仿真](.\Git安装\配置终端仿真.jpg)
+![配置终端仿真](Git安装/配置终端仿真.jpg)
 
 > 大多数其他Cygwin/MSYS终端一样，MinTTY也是基于pseudo终端("pty")设备的。但是MinTTY并不能完全替代windows的[命令提示符](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6)。windows上自带简单的[文本输出](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%96%87%E6%9C%AC%E8%BE%93%E5%87%BA)的原生态的[命令提示符](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6)通常可以很好的工作，但交互性更好的诸如MinTTY这样的应用程序却可能出现故障——虽然通常都有应对方案。这就是为什么MinTTY不能完全替代windows自带的[命令提示符](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6)。
 >
@@ -64,7 +62,7 @@ categories:
 
 7. 其他的配置
 
-![其他配置](.\Git安装\其他配置.jpg)
+![其他配置](Git安装/其他配置.jpg)
 
 > 认证管理器：[参考链接](https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2FMicrosoft%2FGit-Credential-Manager-for-Windows)就是Github的账号等认证机制
 >
@@ -80,7 +78,7 @@ categories:
 yum info git
 ```
 
-![仓库版本](.\Git安装\image-20210427095620314.png)
+![仓库版本](Git安装/image-20210427095620314.png)
 
 使用下述语句安装
 

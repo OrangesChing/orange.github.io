@@ -104,7 +104,7 @@ google_analytics:
 avatar: /img/my.jpg
 
 # the banner image of index
-top_img: http://img.netbian.com/file/2018/0813/e19efc0e7711aad4a16df8b61f45dfaa.jpg
+top_img: /img/index.jpg
 # 以下鏈接是動態壁紙，每次刷新會更換
 # https://source.unsplash.com/collection/collectionid/1600x900
 # https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
@@ -112,7 +112,7 @@ top_img: http://img.netbian.com/file/2018/0813/e19efc0e7711aad4a16df8b61f45dfaa.
 # https://api.dujin.org/bing/1366.php
 
 # if the banner of page not setting,it will show the top_img
-default_top_img: http://img.netbian.com/file/2018/0813/e19efc0e7711aad4a16df8b61f45dfaa.jpg
+default_top_img: /img/index.jpg
 
 # the default cover of the post
 default_cover:
@@ -424,7 +424,7 @@ subtitle:
   # source: false
   # (如果有英文逗號' , '，請使用轉義字符 &#44;)
   sub:
-     - 不做一个看起来像程序员的程序媛
+     - 不要说我看起来像程序员，会生气
 
 
 ####    側邊欄    ####
@@ -442,7 +442,7 @@ aside:
 
 # 網站公告
 announcement:
-  content: 欢迎访问破站，喜欢请收藏o(≧v≦)o~~
+  content: 欢迎访问破站，学习笔记有问题请联系我，轻喷，喜欢请收藏o(≧v≦)o~~
 
 # busuanzi count for PV / UV in site
 # 訪問人數
