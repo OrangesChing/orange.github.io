@@ -1,6 +1,6 @@
 ---
-title: Git服务器搭建
-date: 2021-04-27 10:39:00
+title: 二、Git安装与服务器搭建
+date: 2021-04-29 10:39:00
 tags: 
   - 环境搭建
 categories:
@@ -10,9 +10,144 @@ categories:
 
 # 安装Git
 
-见安装Git教程：{% post_link Git安装 %}
+## Windows安装
 
-# 创建用户
+下载最新版Git安装包：https://git-scm.com/download/win
+
+打开安装包后，**可一直使用默认选项，点下一步**，下面是各步骤选项详述
+
+1. 设置安装路径
+
+![安装路径](二、Git安装与服务器搭建\安装路径.jpg)
+
+2. 选择安装组件
+
+![安装组件](二、Git安装与服务器搭建\安装组件.jpg)
+
+3. 选择默认编辑器
+
+   ![image-20210427134320574](二、Git安装与服务器搭建\image-20210427134320574.png)
+
+4. 修改系统的环境变量
+
+![环境变量](二、Git安装与服务器搭建\环境变量.jpg)
+
+4. SSL的证书的选择
+
+![SSH证书](二、Git安装与服务器搭建\SSH证书.jpg)
+
+> **https：（全称：Hyper Text Transfer Protocol over Secure Socket Layer）**
+>
+> 简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同[http](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2Fhttp):体系。用于安全的HTTP数据传输。
+>
+> [参考链接：百科](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2Fhttps%2F285356%3Ffr%3Daladdin)
+
+5. 配置行尾结束符
+
+![配置行尾结束符](二、Git安装与服务器搭建\配置行尾结束符.jpg)
+
+**配置行尾结束符**
+
+| 系统    | 换行符 |
+| ------- | ------ |
+| windows | \n\r   |
+| unix    | \n     |
+| mac     | \r     |
+
+6. 配置终端仿真
+
+![配置终端仿真](二、Git安装与服务器搭建\配置终端仿真.jpg)
+
+> 大多数其他Cygwin/MSYS终端一样，MinTTY也是基于pseudo终端("pty")设备的。但是MinTTY并不能完全替代windows的[命令提示符](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6)。windows上自带简单的[文本输出](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E6%96%87%E6%9C%AC%E8%BE%93%E5%87%BA)的原生态的[命令提示符](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6)通常可以很好的工作，但交互性更好的诸如MinTTY这样的应用程序却可能出现故障——虽然通常都有应对方案。这就是为什么MinTTY不能完全替代windows自带的[命令提示符](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2F%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6)。
+>
+> [参考链接：百科](https://link.jianshu.com?t=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FMinTTY%2F9579126%3Ffr%3Daladdin)
+
+7. 其他的配置
+
+![其他配置](二、Git安装与服务器搭建\其他配置.jpg)
+
+> 认证管理器：[参考链接](https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2FMicrosoft%2FGit-Credential-Manager-for-Windows)就是Github的账号等认证机制
+>
+> 符号链接：[参考](https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fgit-for-windows%2Fgit%2Fwiki%2FSymbolic-Links)官方介绍[参考博文](https://link.jianshu.com?t=http%3A%2F%2Fblog.csdn.net%2Fu013777351%2Farticle%2Fdetails%2F50557260)
+
+## CentOS安装
+
+### 仓库安装
+
+使用yum源仓库安装，安装方便，但缺点在于安装的版本不是最新版本且无法安装历史版本，可使用下面语句查看源仓库的版本
+
+```
+yum info git
+```
+
+![仓库版本](二、Git安装与服务器搭建\image-20210427095620314.png)
+
+使用下述语句安装
+
+```
+yum -y install git
+```
+
+安装的git在`/usr/bin/git`下
+
+### 源码安装
+
+#### 源码安装依赖的依赖库安装
+
+```shell
+yum remove git -y
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker -y
+```
+
+#### 下载并解压源码
+
+https://mirrors.edge.kernel.org/pub/software/scm/git/找到最新版本的链接
+
+```shell
+cd /usr/local/src/
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
+tar zxvf git-2.9.5.tar.gz
+```
+
+#### 配置安装路径，开始编译安装
+
+安装路径为`/user/local/git`
+
+```shell
+cd git-2.9.5
+./configure --prefix=/usr/local/git/
+make
+make install
+```
+
+#### 添加到环境变量
+
+```shell
+vim /etc/profile
+   i
+   文件末尾添加内容:export PATH="/usr/local/git/bin:$PATH"
+   :wq
+source /etc/profile
+```
+
+#### 查看是否安装成功（查看版本号）
+
+```shell
+git --version  
+```
+
+#### 将Git设置为默认路径，不然后面克隆时会报错
+
+```shell
+ln -sf /usr/local/git/bin/git-upload-pack /bin/git-upload-pack
+ln -sf /usr/local/git/bin/git-receive-pack /bin/git-receive-pack
+```
+
+# Git服务器搭建
+
+
+
+## 创建用户
 
 ```shell
 # 添加git账户
@@ -31,7 +166,7 @@ $ cd /home && ls -al
 # 默认还给我们分配一个名字叫git的组。
 ```
 
-# 创建空仓库
+## 创建空仓库
 
 创建一个裸仓库，裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的Git仓库通常都以.git结尾。在仓库想放的文件夹下执行以下命令：
 
@@ -42,11 +177,11 @@ git init --bare learngit.git
 chown git:git learngit.git  
 ```
 
-# 权限管理
+## 权限管理
 
-## 手动管理
+### 手动管理
 
-### 密码验证
+#### 密码验证
 
 以上步骤完成后，就可以在客户端使用密码拉取服务器代码了，在客户端执行：
 
@@ -59,7 +194,7 @@ git clone git@IP地址:仓库路径
 
 这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入yes回车即可。
 
-![image-20210427150347039](/Git服务器搭建/image-20210427150347039.png)
+![image-20210427150347039](二、Git安装与服务器搭建/image-20210427150347039.png)
 
 Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：
 
@@ -68,9 +203,9 @@ Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一�
 这个警告只会出现一次，后面的操作就不会有任何警告了。
 如果你实在担心有人冒充GitHub服务器，输入yes前可以对照GitHub的RSA Key的指纹信息是否与SSH连接给出的一致
 
-### SSH公钥验证
+#### SSH公钥验证
 
-#### 服务器打开RSA认证
+##### 服务器打开RSA认证
 首先需要将`/etc/ssh/sshd_config`中将RSA认证打开，即：
 
 ```
@@ -106,7 +241,7 @@ chmod 700 /home/git/.ssh/
 chmod 600 /home/git/.ssh/authorized_keys
 ```
 
-#### 客户端创建ssh公钥私钥
+##### 客户端创建ssh公钥私钥
 
 **查看是否有私钥**
 检查是否已经拥有ssh公钥和私钥，进入用户的主目录：
@@ -129,7 +264,7 @@ ssh-keygen -t rsa -C "youremail@example.com"
 
 创建成功后再次查看是否有私钥
 
-#### 上传公钥
+##### 上传公钥
 
 ```shell
 # 切换到git账户
@@ -147,9 +282,9 @@ cat id_rsa.pub >> authorized_keys
 
 然后再次clone的时候，或者是之后push的时候，就不需要再输入密码了：
 
-![image-20210427155719466](Git服务器搭建\image-20210427155719466.png)
+![image-20210427155719466](二、Git安装与服务器搭建/image-20210427155719466.png)
 
-#### 禁用git用户的shell登陆
+##### 禁用git用户的shell登陆
 出于安全考虑，第二步创建的git用户不允许登录shell
 
 1. 创建`git-shell-commands`目录
@@ -184,21 +319,21 @@ git:x:1000:1000::/home/git:/usr/local/git/bin/git-shell
 
 ssh登录，跳转到git-shell，不可执行shell指令
 
-![image-20210427165832161](Git服务器搭建/image-20210427165832161.png)
+![image-20210427165832161](二、Git安装与服务器搭建/image-20210427165832161.png)
 
 git clone
 
-![image-20210427165954350](Git服务器搭建/image-20210427165954350.png)
+![image-20210427165954350](二、Git安装与服务器搭建/image-20210427165954350.png)
 
 此时我们就不用担心客户端通过shell登录执行一些乱七八糟的操作了，只允许使用git-shell进行管理git的仓库
 
 如果有其他小伙伴要连接git服务器，仅需要把他的公钥也添加到authorized_keys即可
 
-## 自动管理
+### 自动管理
 
 以下配置承接自本文：客户端创建SSH公钥私钥部分
 
-### 添加`gitolite`依赖包
+#### 添加`gitolite`依赖包
 
 依赖`perl`包
 
@@ -206,17 +341,17 @@ git clone
 yum install 'perl(Data::Dumper)' 
 ```
 
-### 清空服务器端配置的ssh的公钥
+#### 清空服务器端配置的ssh的公钥
 
 确保：`~/.ssh/authorized_keys`文件是空的，或者不存在。如果已经存在，建议你把他改名即可，比如：authorized_keys.bak
 
-### 上传管理员客户端的ssh公钥
+#### 上传管理员客户端的ssh公钥
 
 把你管理员电脑的ssh的`id_rsa.pub`文件拷贝到服务器的：` $HOME/YourName.pub`
 
 YourName可以自定义，最好根据不同伙伴的名字命名。
 
-### 安装配置gitolite
+#### 安装配置gitolite
 
 ```shell
 # 切换到git账号
@@ -253,7 +388,7 @@ ls /home/git
 
 好了，到此位置，管理员就可以直接把默认的远程管理的仓库gitolite-admin直接clone到本地进行管理git服务了。
 
-### 管理员在本地管理和配置服务器端仓库
+#### 管理员在本地管理和配置服务器端仓库
 
 下载服务器端的远程管理仓库
 
@@ -269,7 +404,7 @@ $ cd gitolite-admin
 #     └── malun.pub
 ```
 
-###  gitolite的权限配置
+####  gitolite的权限配置
 
 1. 添加其他开发的小伙伴
    
