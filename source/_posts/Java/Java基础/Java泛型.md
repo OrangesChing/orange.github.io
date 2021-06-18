@@ -1,8 +1,6 @@
 ---
 title: Java泛型
 date: 2021-02-19 10:30:48
-tags:
-  - 反射
 categories:
   - Java
   - Java基础

@@ -2,7 +2,7 @@
 title: Vue入门
 date: 2020-08-19 15:45:41
 tags:
-  - Vue
+  - 前端技术
 categories:
   - 前端框架
   - Vue

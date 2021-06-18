@@ -2,7 +2,7 @@
 title: JDK安装与部署
 date: 2021-04-28 08:59:00
 tags: 
-  - 环境搭建
+  - 环境搭建与配置
 categories:
   - Java
 ---

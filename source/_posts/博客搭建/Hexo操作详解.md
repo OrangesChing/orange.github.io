@@ -8,8 +8,6 @@ categories:
   - 博客搭建
 ---
 
-[TOC]
-
 # 网站配置
 
 网站根目录下的 `_config.yml` 中修改大部分的配置

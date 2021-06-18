@@ -1,0 +1,15 @@
+内存模型
+	类加载
+	GC垃圾回收
+	强引用、软引用、弱引用、幻象引用
+JVM 调优
+	jvm参数
+	jvm自带命令
+	如何优化Java GC
+	大型跨境电商 JVM 调优经历
+	Jvm知识汇总
+	海量连接服务端jvm参数调优杂记
+JVM 调优工具
+	XXFox
+
+https://github.com/aalansehaiyang/technology-talk/blob/master/basic-knowledge/java.md

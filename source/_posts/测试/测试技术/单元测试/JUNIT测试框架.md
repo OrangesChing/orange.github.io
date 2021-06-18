@@ -1,9 +1,6 @@
 ---
 title: JUNIT测试框架
 date: 2020-08-12 22:18:48
-tags:
-  - 单元测试
-  - JUNIT
 categories:
   - 测试
   - 测试技术

@@ -3,12 +3,10 @@ title: Redis、MySQL、MongoDB、Memcached对比
 date: 2020-11-10 15:48:11
 tags:
   - 缓存
-  - Redis
 categories:
   - 数据库
   - 非关系型数据库
   - Redis
-
 ---
 
 # 四个数据库特点

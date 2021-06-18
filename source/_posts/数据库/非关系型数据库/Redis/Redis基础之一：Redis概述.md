@@ -3,7 +3,7 @@ title: Redis基础之一：Redis概述
 date: 2020-08-19 15:48:11
 tags:
   - 缓存
-  - Redis
+  - 概述
 categories:
   - 数据库
   - 非关系型数据库

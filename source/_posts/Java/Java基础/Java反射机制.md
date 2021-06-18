@@ -1,8 +1,6 @@
 ---
 title: Java反射机制
 date: 2021-02-19 10:30:48
-tags:
-  - 反射
 categories:
   - Java
   - Java基础
@@ -185,7 +183,7 @@ public static Class<?> getClassByThreeMethod(int method){
 
 示例，获取Student类的信息，整个Student可被拆解为以下部分存储在Class对象中供获取
 
-![拆解Student](./Java反射机制/image-20210219164148147.png)
+![拆解Student](Java反射机制\image-20210219164148147.png)
 
 ```java
 public static void getClassMessage(Class<?> clazz) {

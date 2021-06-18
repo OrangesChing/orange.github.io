@@ -3,8 +3,7 @@ title: Redis基础之五：Redis发布订阅
 date: 2020-08-19 15:48:11
 tags:
   - 缓存
-  - Redis
-  - 发布订阅
+  - 消息通信
 categories:
   - 数据库
   - 非关系型数据库

@@ -99,7 +99,7 @@ git commit --amend [file1] [file2] ...
 
 原理：git会使用与当前提交相同的父节点进行一次新提交，旧的提交会被取消
 
-![img](D:\OrangeBlog\source\_posts\版本控制工具\Git\四、Git操作及原理\262345359613448.jpg)
+![img](四、Git文件操作/262345359613448.jpg)
 
 #### 工作区->资源库(`commit -a`)
 

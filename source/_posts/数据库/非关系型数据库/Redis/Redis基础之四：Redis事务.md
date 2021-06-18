@@ -3,7 +3,6 @@ title: Redis基础之四：Redis事务
 date: 2020-08-19 15:48:11
 tags:
   - 缓存
-  - Redis
 categories:
   - 数据库
   - 非关系型数据库

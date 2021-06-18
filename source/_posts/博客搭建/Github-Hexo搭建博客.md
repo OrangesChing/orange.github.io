@@ -1,10 +1,6 @@
 ---
 title:  使用 Github Page + Hexo 搭建自己的博客网站
 date: 2019-10-03 10:36:20
-tags: 
-  - 博客搭建
-  - Github Page
-  - Hexo
 categories:
   - 博客搭建
 ---
@@ -76,8 +72,8 @@ npm install -g hexo-cli
 
 ```shell
 cd <博客放置的路径>  #不执行此语句默认在用户目录下
-hexo init myBlog<博客文件夹名>
-cd myBlog<博客文件夹名>
+hexo init <博客文件夹名>
+cd s<博客文件夹名>
 npm install
 ```
 

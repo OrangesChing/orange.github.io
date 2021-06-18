@@ -1,6 +1,0 @@
-Cannal原理
-JAVA8骚操作——Date/TimeAPI完善
-JAVA单元测试——MOCK,JACOCO
-RabbtiMQ的使用——进阶
-xxl-job架构及原理
-spring基础

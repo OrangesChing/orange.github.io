@@ -2,7 +2,7 @@
 title: Mock技术概述
 date: 2020-08-12 22:18:48
 tags:
-  - Mock
+  - 概述
 categories:
   - 测试
   - 测试技术

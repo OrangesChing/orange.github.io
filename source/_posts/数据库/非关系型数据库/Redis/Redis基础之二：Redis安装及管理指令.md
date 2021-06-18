@@ -3,7 +3,7 @@ title: Redis基础之二：Redis安装及管理指令
 date: 2020-11-10 15:48:11
 tags:
   - 缓存
-  - Redis
+  - 环境安装与配置
 categories:
   - 数据库
   - 非关系型数据库

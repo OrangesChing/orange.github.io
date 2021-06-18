@@ -3,6 +3,7 @@ title: MySQL安装与部署
 date: 2021-04-28 18:59:00
 tags: 
   - 环境搭建
+  - 数据库
 categories:
   - 数据库
   - 关系型数据库

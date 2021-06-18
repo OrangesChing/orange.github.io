@@ -1,16 +1,11 @@
 ---
 title: Hexo常用命令
 date: 2019-10-04 10:59:00
-tags: 
-  - 博客搭建
-  - Hexo
 categories:
   - 博客搭建
 ---
 
 详细使用文档参见 [hexo](https://hexo.io/zh-cn/) 官网
-
-[TOC]
 
 # 新建网站 init
 
@@ -142,3 +137,4 @@ $ hexo --draft
 
 显示 `source/_drafts` 文件夹中的草稿文章。
 
+ 
