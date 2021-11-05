@@ -5,8 +5,8 @@ tags:
   - 环境安装与配置
   - ORM框架
 categories:
-  - JAVA
-  - JAVA与数据库
+  - Java
+  - Java与数据库
   - MyBatis-plus
 ---
 

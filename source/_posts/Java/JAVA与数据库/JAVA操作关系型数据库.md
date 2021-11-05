@@ -1,18 +1,18 @@
 ---
-title: JAVA操作关系型数据库
+title: Java操作关系型数据库
 date: 2020-08-25 08:59:43
 tags:
   - 概述
   - ORM框架
   - JDBC
 categories:
-  - JAVA
-  - JAVA与数据库
+  - Java
+  - Java与数据库
 ---
 
 JAVA的数据库操作可视为以下演变图，ORM框架中可以加入池化技术，ORM框架的底层都是JDBC实现，只是为了方便开发和解耦封装。
 
-![数据库操作演变](JAVA操作关系型数据库/数据库操作演变.png)
+![数据库操作演变](Java操作关系型数据库/数据库操作演变.png)
 
 # 原生JDBC
 
@@ -56,7 +56,7 @@ JDBC是Java数据库连接，全称是Java Database Connectivity，简称JDBC，
 
 注意写代码之前，要导入数据库驱动包，连接不同厂商的数据库要用不同的驱动包
 
-![JDBC](JAVA操作关系型数据库/JDBC.png)
+![JDBC](Java操作关系型数据库/JDBC.png)
 
 示例代码如下：
 
@@ -208,7 +208,7 @@ public class MysqlTest {
 
 ## 连接步骤
 
-JAVA操作关系型数据库![JDBC连接](JAVA操作关系型数据库/JDBC连接.png)
+JAVA操作关系型数据库![JDBC连接](Java操作关系型数据库/JDBC连接.png)
 
 上图大致画出以访问MySQL为例，执行一条 SQL 命令的流程：
 
@@ -387,7 +387,7 @@ Hibernate更强调如何对单条记录进行操作，对于更复杂的操作�
 
 ## 架构
 
-| ![架构](JAVA操作关系型数据库/hibernate_architecture.jpg) | ![高层次架构](JAVA操作关系型数据库/hibernate_high_level.jpg) |
+| ![架构](Java操作关系型数据库/hibernate_architecture.jpg) | ![高层次架构](Java操作关系型数据库/hibernate_high_level.jpg) |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | 详细的 Hibernate 应用程序体系结构                        | 非常高水平的 Hibernate 应用程序架构                          |
 

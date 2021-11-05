@@ -4,3 +4,6 @@ JAVA单元测试——MOCK,JACOCO
 RabbtiMQ的使用——进阶
 xxl-job架构及原理
 spring基础
+阿里nacos
+ES搜索
+数据一致性

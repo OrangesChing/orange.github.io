@@ -4,8 +4,8 @@ date: 2020-08-31 14:39:15
 tags:
   - ORM框架
 categories:
-  - JAVA
-  - JAVA与数据库
+  - Java
+  - Java与数据库
   - MyBatis-plus
 ---
 

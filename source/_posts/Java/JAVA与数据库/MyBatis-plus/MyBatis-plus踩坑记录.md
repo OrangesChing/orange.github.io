@@ -5,8 +5,8 @@ tags:
   - ORM框架
   - 开发经验
 categories:
-  - JAVA
-  - JAVA与数据库
+  - Java
+  - Java与数据库
   - MyBatis-plus
 
 ---

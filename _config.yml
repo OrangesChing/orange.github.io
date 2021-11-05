@@ -102,5 +102,5 @@ search:
 deploy:
   type: git
   repo: 
-    github: https://github.com/OrangesChing/OrangesChing.github.io.git
+    github: https://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@github.com/OrangesChing/OrangesChing.github.io.git
   branch: master
