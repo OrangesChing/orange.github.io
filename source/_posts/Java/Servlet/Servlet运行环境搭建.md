@@ -176,33 +176,33 @@ public class HelloServlet extends HttpServlet {
 
 ![image-20210716172753962](Servlet运行环境搭建\image-20210716172753962.png)
 
-![image-20210716173221114](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716173221114.png)
+![image-20210716173221114](Servlet运行环境搭建\image-20210716173221114.png)
 
 使用该框架格式会给你创建WEB-INF文件夹和web.xml
 
-![image-20210716173459747](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716173459747.png)
+![image-20210716173459747](Servlet运行环境搭建\image-20210716173459747.png)
 
 #### 创建classes文件夹和lib文件夹
 
-![image-20210716173710794](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716173710794.png)
+![image-20210716173710794](Servlet运行环境搭建\image-20210716173710794.png)
 
-![image-20210716174140213](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716174140213.png)
+![image-20210716174140213](Servlet运行环境搭建\image-20210716174140213.png)
 
 ### 配置项目
 
 #### 设置编译后的class文件放置的路径
 
-![image-20210716174731001](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716174731001.png)
+![image-20210716174731001](Servlet运行环境搭建\image-20210716174731001.png)
 
 #### 设置项目运行环境Tomcat
 
-![image-20210716175553504](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716175553504.png)
+![image-20210716175553504](Servlet运行环境搭建\image-20210716175553504.png)
 
-![image-20210716181226976](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716181226976.png)
+![image-20210716181226976](Servlet运行环境搭建\image-20210716181226976.png)
 
 #### 配置部署方式
 
-![image-20210716181324936](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716181324936.png)
+![image-20210716181324936](Servlet运行环境搭建\image-20210716181324936.png)
 
 > Artifact详细解说：https://developer.aliyun.com/article/659686
 
@@ -210,17 +210,17 @@ public class HelloServlet extends HttpServlet {
 
 运行改项目，会弹出浏览器，显示的是index.jsp页面的内容
 
-![image-20210716181740757](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716181740757.png)
+![image-20210716181740757](Servlet运行环境搭建\image-20210716181740757.png)
 
-![image-20210716181715427](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716181715427.png)
+![image-20210716181715427](Servlet运行环境搭建\image-20210716181715427.png)
 
 ## 创建Servlet
 
 ### 导入servlet-api包
 
-![image-20210716175200990](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716175200990.png)
+![image-20210716175200990](Servlet运行环境搭建\image-20210716175200990.png)
 
-![image-20210716175234123](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210716175234123.png)
+![image-20210716175234123](Servlet运行环境搭建\image-20210716175234123.png)
 
 ### 编写Servlet
 
@@ -272,10 +272,10 @@ public class HelloServlet extends HttpServlet {
 
 启动项目访问`http://localhost:8080/ServletLearn/HelloServlet`
 
-![image-20210719092521276](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210719092521276.png)
+![image-20210719092521276](Servlet运行环境搭建\image-20210719092521276.png)
 
 ## 注意点
 
 Project SDK与Project language level要保持一致，否则会报`java: 无效的源发行版: 8`
 
-![image-20210719092406471](D:\OrangeBlog\source\_draft\Java\Servlet\Servlet运行环境搭建\image-20210719092406471.png)
+![image-20210719092406471](Servlet运行环境搭建\image-20210719092406471.png)

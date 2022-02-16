@@ -104,3 +104,6 @@ deploy:
   repo: 
     github: git@github.com:OrangesChing/OrangesChing.github.io.git
   branch: master
+  
+include:
+  - .nojekyll
