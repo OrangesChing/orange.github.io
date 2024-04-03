@@ -3,6 +3,7 @@ title: 一、Nginx概述
 date: 2021-05-24 10:59:00
 tags:
   - 概述
+  - 面试知识点
 categories:  
   - 服务器配置与管理
   - Nginx

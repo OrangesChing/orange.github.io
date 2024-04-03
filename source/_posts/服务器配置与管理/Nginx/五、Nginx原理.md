@@ -3,6 +3,7 @@ title: 五、Nginx原理
 date: 2021-06-10 10:59:00
 tags: 
   - 原理篇
+  - 面试知识点
 categories:
   - 服务器配置与管理
   - Nginx
@@ -45,7 +46,7 @@ Nginx默认采用多进程工作方式，Nginx启动后，会运行一个`master
 
 # 处理流程及细节
 
-Nginx支持多种连接处理方式，具体使用哪一种由当前平台决定，一般为Epoll方式，说原理的时候一般分析Epoll方式。Nginx的Epoll工作流程如下：
+Nginx支持多种连接处理方式，具体使用哪一种由当前平台决定，一般为`Epoll方式`，说原理的时候一般分析`Epoll方式`。Nginx的Epoll工作流程如下：
 
 1. `master 进程`接受到信号（如nginx -s reload）后启动，读取配置文件，建好需要监听的`socket`后，然后再`fork`出多个`woker进程`，这样每个`work进程`都可以去`accept`这个`socket`
 2. 当一个`client连接`到来时，所有`accept`的`work进程`都会受到通知，但只有一个进程可以accept成功，其它的则会accept失败（防止惊群现象）
